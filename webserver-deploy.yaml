@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: webserver-deploy
+  name: webserver-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webserver-deploy
+  template:
+    metadata:
+      labels:
+        app: webserver-deploy
+    spec:
+      containers:
+      - image: kodal035/web-server
+        name: web-server
+        ports:
+          - containerPort: 80
+        env:
+          - name: MYSQL_DATABASE_HOST
+            value: "mysql"  
+          - name: MYSQL_DATABASE
+            value: "phonebook"
+          - name: MYSQL_USER
+            value: "kodal035"
+          - name: MYSQL_PASSWORD
+            value: "sifre.12345"

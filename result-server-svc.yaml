@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: result-server-deploy
+  name: result-server-deploy
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+    nodePort: 30002
+  selector:
+    app: result-server-deploy
+  type: NodePort
+
